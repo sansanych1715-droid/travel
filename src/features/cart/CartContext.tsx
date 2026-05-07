@@ -34,15 +34,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
   function removeFromCart(id: number) {
     setCart((prev) =>
       prev
-        .map((el) => (el.item.id === id ? { ...el, count: el.count - 1 } : el))
-        .filter((el) => el.count > 0),
+        .map((item) =>
+          item.item.id === id ? { ...item, count: item.count - 1 } : item,
+        )
+        .filter((item) => item.count > 0),
     );
   }
   function removeAllFromCart(id: number) {
     setCart((prev) =>
       prev
-        .map((el) => (el.item.id === id ? { ...el, count: 0 } : el))
-        .filter((el) => el.count > 0),
+        .map((item) => (item.item.id === id ? { ...item, count: 0 } : item))
+        .filter((item) => item.count > 0),
     );
   }
   return (
