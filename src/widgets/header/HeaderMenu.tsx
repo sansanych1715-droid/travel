@@ -1,4 +1,5 @@
 import styles from "./Header.module.scss";
+import { Link } from "react-router-dom";
 import HeaderTopBar from "./HeaderTopBar";
 
 function HeaderMenu() {
@@ -7,12 +8,12 @@ function HeaderMenu() {
       <nav>
         <HeaderTopBar></HeaderTopBar>
         <div className={styles.list}>
-          <a href="/" className={styles.link}>
+          <Link to="/" className={styles.link}>
             Пошук тура
-          </a>
-          <a href="/about" className={styles.link}>
+          </Link>
+          <Link to="/about" className={styles.link}>
             Напрямок
-          </a>
+          </Link>
         </div>
       </nav>
     </>

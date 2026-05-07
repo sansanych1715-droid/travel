@@ -1,0 +1,46 @@
+.card {
+  max-width: 379px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+}
+.wrapper {
+  padding: 0 150px;
+  margin-top: 50px;
+}
+
+.slider {
+  padding: 20px 150px;
+
+  :global(.swiper-button-prev) {
+    background: #99d599;
+    border-radius: 50%;
+
+    svg {
+      width: 88%;
+      height: 50%;
+    }
+  }
+
+  :global(.swiper-button-next) {
+    background: #99d599;
+    border-radius: 50%;
+
+    svg {
+      width: 88%;
+      height: 50%;
+    }
+  }
+}
+
+.text {
+  padding: 15px;
+}
+.name {
+  size: 22px;
+  color: #222;
+}
+.btns {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}

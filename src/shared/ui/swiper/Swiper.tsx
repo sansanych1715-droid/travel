@@ -2,8 +2,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { ReactNode } from "react";
-import { Swiper, SwiperProps } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Swiper } from "swiper/react";
+import type { SwiperProps } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
 
 interface MySwiperProps extends SwiperProps {
   children: ReactNode;
@@ -12,9 +13,10 @@ interface MySwiperProps extends SwiperProps {
 export const CustomSwiper = ({ children, ...props }: MySwiperProps) => {
   return (
     <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
-      spaceBetween={20}
-      slidesPerView={1}
+      modules={[Navigation, Autoplay]}
+      spaceBetween={80}
+      slidesPerView={3}
+      loop={true}
       {...props}
     >
       {children}

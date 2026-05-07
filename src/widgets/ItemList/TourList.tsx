@@ -1,26 +1,45 @@
-import { CustomSwiper } from "../../shared/ui/swiper/Swiper";
+import { useContext } from "react";
+import { CustomSwiper } from "@/shared/ui/swiper/Swiper";
 import { SwiperSlide } from "swiper/react";
 import styles from "./TourList.module.scss";
-import { getTours } from "../../shared/api/toursApi";
-import { useEffect, useState } from "react";
-import { Tour } from "../../shared/api/types";
+import type { Tour } from "@/shared/api/types";
+import { useCart } from "@/features/cart/CartContext";
 
-function TourList() {
-  const [data, setData] = useState<Tour[]>([]);
+interface Props {
+  tours: Tour[];
+}
 
-  useEffect(() => {
-    getTours().then(setData);
-  }, []);
-
+function TourList({ tours }: Props) {
+  const { addToCart } = useCart();
   return (
-    <CustomSwiper navigation pagination={{ clickable: true }}>
-      {data.map((item) => (
-        <SwiperSlide key={item.id}>
-          {item.title}
-          <div style={{ height: "200px", backgroundColor: item.img }}></div>
-        </SwiperSlide>
-      ))}
-    </CustomSwiper>
+    <div className={styles.wrapper}>
+      <CustomSwiper
+        navigation
+        pagination={{ clickable: true }}
+        className={styles.slider}
+      >
+        {tours.map((item) => (
+          <SwiperSlide key={item.id} className={styles.card}>
+            <div
+              style={{
+                height: "200px",
+                backgroundColor: item.img,
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
+              }}
+            ></div>
+            <div className={styles.text}>
+              <div className="name">{item.title}</div>
+              <div className="price">Ціна: {item.price}$</div>
+              <div className={styles.btns}>
+                <button>В бажане</button>
+                <button onClick={() => addToCart(item)}>В кошики</button>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </CustomSwiper>
+    </div>
   );
 }
 export default TourList;

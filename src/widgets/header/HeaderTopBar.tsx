@@ -1,25 +1,30 @@
+import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
-import phone from "../../assets/phone.svg";
-import mail from "../../assets/mail.svg";
+import phone from "@/assets/phone.svg";
+import mail from "@/assets/mail.svg";
+import { useContext } from "react";
+import { useCart } from "@/features/cart/CartContext";
 
 function HeaderTopBar() {
+  const { cart } = useCart();
   return (
     <>
       <div className={styles.topBar}>
         <div className={styles.list}>
-          <a href="#">Страховки</a>
-          <a href="#">Візи</a>
-          <a href="#">Контакти</a>
-          <a href="#">
+          <Link to="#">Страховки</Link>
+          <Link to="#">Візи</Link>
+          <Link to="#">Контакти</Link>
+          <Link to="#">
             <img src={phone} alt="" />
             +380 63 234 0745
-          </a>
-          <a href="#">
+          </Link>
+          <Link to="#">
             <img src={mail} alt="" />
             contact@email.ee
-          </a>
-          <a href="#" className="login"></a>
-          <a href="#">UA</a>
+          </Link>
+          <Link to="#" className="login"></Link>
+          <Link to="#">UA</Link>
+          <Link to="/cart">Кошик: {cart.length}</Link>
         </div>
       </div>
     </>

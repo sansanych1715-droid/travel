@@ -1,0 +1,21 @@
+.wrapper {
+  margin: 30px 96px 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.count {
+  display: flex;
+  gap: 20px;
+}
+
+.ofer {
+  margin-top: 20px;
+}
