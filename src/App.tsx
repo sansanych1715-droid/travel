@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import Header from "./widgets/header/Header";
 import MainRouter from "./routes/MainRouter";
 import { CartProvider } from "./features/cart/CartContext";

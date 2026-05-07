@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.scss";
@@ -9,10 +9,10 @@ function CartPage() {
   const dispatch = useDispatch();
   const { cart, addToCart, removeFromCart, removeAllFromCart } = useCart();
 
-  const totalPrice = cart.reduce(
-    (sum, { item, count }) => sum + item.price * count,
-    0,
-  );
+  const totalPrice = useMemo(() => {
+    return cart.reduce((sum, item) => sum + item.item.price * item.count, 0);
+  }, [cart]);
+
   return (
     <section className="cart">
       <div className={styles.wrapper}>
